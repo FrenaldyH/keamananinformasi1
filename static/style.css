@@ -1,0 +1,8 @@
+/* Plain white page, just enough spacing to be readable */
+body { background: #fff; color: #000; font-family: sans-serif; margin: 16px; }
+input, select, button { margin: 2px; padding: 4px; }
+table { border-collapse: collapse; margin: 8px 0; }
+th, td { border: 1px solid #999; padding: 4px 6px; font-size: 13px; vertical-align: top; }
+code { font-size: 12px; word-break: break-all; }
+#msg { font-weight: bold; }
+#output img, #output video { max-width: 100%; max-height: 400px; display: block; }

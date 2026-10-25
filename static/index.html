@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Secure Storage</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Secure Storage (AES / DES / RC4)</h1>
+  <p id="msg"></p>
+
+  <!-- Login / register: shown when not logged in -->
+  <section id="auth">
+    <h2>Login / Register</h2>
+    <form id="authForm">
+      <input name="username" placeholder="username" required>
+      <input name="password" type="password" placeholder="password (min 8)" required>
+      <button type="submit" value="login">Login</button>
+      <button type="submit" value="register">Register</button>
+    </form>
+  </section>
+
+  <!-- Main app: shown after login -->
+  <section id="main" hidden>
+    <p>Login sebagai <b id="who"></b> <button id="logout">Logout</button></p>
+
+    <h2>1. Data Pribadi</h2>
+    <form id="profileForm">
+      <input name="nama" placeholder="Nama lengkap" required>
+      <input name="nik" placeholder="NIK" pattern="\d{16}" title="16 digit" required>
+      <input name="tanggal_lahir" type="date" required>
+      <input name="alamat" placeholder="Alamat" required>
+      <input name="telepon" placeholder="No. HP" required>
+      <input name="email" type="email" placeholder="Email" required>
+      <button>Simpan (terenkripsi)</button>
+    </form>
+
+    <h2>2. Upload File</h2>
+    <form id="uploadForm">
+      <select name="kind">
+        <option value="idcard">Foto KTP (jpg/png/webp)</option>
+        <option value="document">Dokumen (pdf/doc/docx/xls/xlsx)</option>
+        <option value="video">Video (mp4/webm/mov/mkv)</option>
+      </select>
+      <input name="file" type="file" required>
+      <button>Upload (terenkripsi)</button>
+    </form>
+
+    <h2>3. Data Tersimpan</h2>
+    <p>Tiap item disimpan 3x: AES-256-CBC, DES-CBC, RC4. Kolom berisi: ukuran ciphertext / waktu enkripsi.</p>
+    <table>
+      <thead>
+        <tr><th>ID</th><th>Jenis</th><th>Nama file</th><th>Ukuran asli</th>
+            <th>AES</th><th>DES</th><th>RC4</th><th>Aksi</th></tr>
+      </thead>
+      <tbody id="items"></tbody>
+    </table>
+
+    <h2>4. Hasil</h2>
+    <div id="output"></div>
+  </section>
+
+  <script src="app.js"></script>
+</body>
+</html>
